@@ -1,0 +1,5 @@
+ballet_waytoc:
+    resource: "@BalletWaytocBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

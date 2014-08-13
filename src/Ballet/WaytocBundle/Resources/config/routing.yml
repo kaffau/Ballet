@@ -1,0 +1,12 @@
+ballet_waytoc_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BalletWaytocBundle:Default:index }
+
+front_page:
+    path:      /waytoc
+    defaults:  { _controller: BalletWaytocBundle:Front:index }
+
+about_page:
+    path:      /about
+    defaults:  { _controller: BalletWaytocBundle:Front:about  }
+
