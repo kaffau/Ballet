@@ -1,0 +1,53 @@
+{% block nav %}
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="header-wrap">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ path('front_page') }}">Feed</a>
+                        </li>
+                        <li>
+                            <a href="#about">Faces</a>
+                        </li>
+                        <li>
+                            <a href="#contact">Sketches</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('prac') }}">Delete</a>
+                        </li>
+                        <li>
+                            <a href="#contact">Sketches</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('about_page') }}">About</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar navbar-right list-unstyled list-inline">
+                        <li>
+                            <button class="btn btn-primary" data-toggle="collapse" data-target=".signin-form">
+                                <i class="glyphicon glyphicon glyphicon-plus"></i>
+                                Open account
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary" data-toggle="collapse" data-target=".signin-form">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Sign in
+                            </button>
+                        </li>
+                        {% include 'BalletWaytocBundle:Form:signin.html.twig' %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

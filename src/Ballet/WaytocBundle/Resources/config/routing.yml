@@ -10,3 +10,19 @@ about_page:
     path:      /about
     defaults:  { _controller: BalletWaytocBundle:Front:about  }
 
+info_page:
+    path:      /info
+    defaults:  { _controller: BalletWaytocBundle:Front:info  }
+
+prac:
+    path: /prac
+    defaults: {_controller: BalletWaytocBundle:Front:prac}
+
+account_register:
+    path:     /register
+    defaults: { _controller: BalletWaytocBundle:Account:register }
+
+account_create:
+    path:     /register/create
+    defaults: { _controller: BalletWaytocBundle:Account:create }
+
