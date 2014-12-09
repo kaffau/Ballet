@@ -13,6 +13,7 @@ class Registration
      */
     protected $user;
     protected $pass;
+    protected $date;
 
     /**
      * @Assert\NotBlank()
@@ -39,7 +40,16 @@ class Registration
     {
         $this->termsAccepted = (Boolean) $termsAccepted;
     }
+
     public function setUserPassword($pass){
         $this->user->setPassword($pass);
+    }
+
+    public function setRegisterDate($date){
+        $this->user->setRegistered($date);
+    }
+
+    public function setSalt(){
+        $this->user->setSalt();
     }
 }

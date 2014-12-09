@@ -33,16 +33,16 @@
                     </ul>
                     <ul class="navbar navbar-right list-unstyled list-inline">
                         <li>
-                            <button class="btn btn-primary" data-toggle="collapse" data-target=".signin-form">
+                            <a href="{{ path('account_register')}}" class="btn btn-primary">
                                 <i class="glyphicon glyphicon glyphicon-plus"></i>
                                 Open account
-                            </button>
+                            </a>
                         </li>
                         <li>
-                            <button class="btn btn-primary" data-toggle="collapse" data-target=".signin-form">
+                            <a href="{{ path('login') }}" class="btn btn-primary">
                                 <i class="glyphicon glyphicon-user"></i>
                                 Sign in
-                            </button>
+                            </a>
                         </li>
                         {% include 'BalletWaytocBundle:Form:signin.html.twig' %}
                     </ul>

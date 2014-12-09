@@ -1,0 +1,26 @@
+/** Compass libraries */
+@import "compass/css3";
+@import "compass/utilities/sprites";
+
+$main-sprite-layout: smart;
+$main-sprite-spacing: 3px;
+$main-sprite-sprites: sprite-map("../images/sprites/*.png", $spacing: 3px, $repeat: no-repeat);
+
+@mixin main-sprite($type) {
+    background: sprite($main-sprite-sprites, $type);
+    background-repeat: no-repeat;
+    width: image-width(sprite-file($main-sprite-sprites, $type));
+    height: image-height(sprite-file($main-sprite-sprites, $type));
+}
+
+.icon-up {
+    @include main-sprite('up');
+}
+
+.icon-down {
+    @include main-sprite('down');
+}
+
+.icon-logo {
+    @include main-sprite('logo');
+}

@@ -26,3 +26,8 @@ account_create:
     path:     /register/create
     defaults: { _controller: BalletWaytocBundle:Account:create }
 
+login:
+    pattern:   /login
+    defaults:  { _controller:  BalletWaytocBundle:Security:login }
+login_check:
+    pattern:   /login_check

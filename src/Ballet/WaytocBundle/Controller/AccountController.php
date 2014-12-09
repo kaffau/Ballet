@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Ballet\WaytocBundle\Form\Type\RegistrationType;
 use Ballet\WaytocBundle\Form\Model\Registration;
 use Ballet\WaytocBundle\Entity\User;
-
-
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 
 class AccountController extends Controller
@@ -34,17 +34,18 @@ class AccountController extends Controller
         $form = $this->createForm(new RegistrationType(), new Registration());
 
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $registration = $form->getData();
+
 
             $factory = $this->get('security.encoder_factory');
             $user = new User();
             $encoder = $factory->getEncoder($user);
-            $password = $encoder->encodePassword('ryanpass', $user->getSalt());
-            $user->setPassword($password);
-            $encryptedPassword =  $user->getPassword();
-            $registration->setUserPassword($encryptedPassword);
+            $password = $encoder->encodePassword($registration->getUser()->getPassword(), $registration->getUser()->getSalt());
+
+            $today = new \DateTime('now');
+            $registration->setUserPassword($password);
+            $registration->setRegisterDate($today);
             $em->persist($registration->getUser());
             $em->flush();
 

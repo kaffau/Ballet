@@ -1,0 +1,47 @@
+.header-wrap {
+    height: 76px;
+    border-bottom: 15px solid black;
+    @include box-shadow(0px 3px 63px 0px rgba(0, 0, 0, 0.75));
+    //    background: url('http://www.waytoc.com/images/yootheme/header.png');
+    background: image-url('header-pattern.png');
+}
+
+.navbar-nav {
+    > li {
+        float: left;
+        padding: 0px 12px;
+        margin: -10px 0;
+        @extend .icon-down;
+        background-position: 0 10px;
+        &:hover {
+            @extend .icon-up;
+        }
+        > a {
+            line-height: 27px;
+            margin-left: 5px;
+        }
+    }
+
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #d6dcd3;
+    &:hover {
+        color: white;
+    }
+}
+
+.search-icon-wrapper {
+    position: absolute;
+    right: 9px;
+    top: 9px;
+}
+
+.logo-wrapper {
+    h2 {
+        font: {
+            family: 'Cookie', cursive;
+            size: 64px;
+        }
+    }
+}
