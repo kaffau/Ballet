@@ -30,7 +30,9 @@ security:
             form_login:
                 login_path: login
                 check_path: login_check
-            logout: true
+            logout:
+                path:   /logout
+                target: /waytoc
             anonymous: true
             #http_basic:
             #    realm: "Secured Demo Area"

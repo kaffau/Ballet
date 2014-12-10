@@ -29,5 +29,9 @@ account_create:
 login:
     pattern:   /login
     defaults:  { _controller:  BalletWaytocBundle:Security:login }
+
 login_check:
     pattern:   /login_check
+
+logout:
+    path:   /logout
