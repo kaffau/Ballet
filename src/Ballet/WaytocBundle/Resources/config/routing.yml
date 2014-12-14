@@ -35,3 +35,8 @@ login_check:
 
 logout:
     path:   /logout
+
+upload:
+    path:   /upload
+    defaults: {_controller: BalletWaytocBundle:Image:upload }
+

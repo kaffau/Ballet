@@ -95,59 +95,61 @@
                     </div>
                 </div>
             </div>
-
         </div><!-- col-sm-8 -->
-    </div>
-
-{% endblock %}
-
-
-{% block aside %}
-    <div class="col-sm-12 nopadding">
-        <form class="" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+        {% block sidebar_right %}
+            <div class="col-sm-3">
+                <div class="col-sm-12 nopadding">
+                    <form class="" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
                 <span class="search-icon-wrapper">
                     <i class="glyphicon glyphicon-search"></i>
                 </span>
+                        </div>
+                    </form>
+                </div>
+                {% if app.user %}
+                    <div class="col-sm-12 nopadding">
+                        <div class="panel panel-blue panel-content">
+                            <div class="caption text-center">
+                                <h3>Upload photo!</h3>
+                            </div>
+                            <a href="{{ path('upload') }}" class="btn btn-primary btn-center">Upload</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 nopadding">
+                        <div class="panel panel-orange panel-content">
+                            <div class="caption text-center">
+                                <h3>Create blog!</h3>
+                            </div>
+                            <button class="btn btn-default center-block">Create your blog!</button>
+                        </div>
+                    </div>
+                {%  endif %}
+                <div class="col-sm-12 nopadding">
+                    <div class="panel panel-green panel-content">
+                        <div class="caption text-center">
+                            <h3>Like us</h3>
+                        </div>
+                        <a href="{{ path('account_register' )}}" class="btn btn-default btn-center">
+                            <i class="glyphicon glyphicon-thumbs-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-12 nopadding">
+                    <div class="panel panel-blue panel-content">
+                        <div class="caption text-center">
+                            <h3>Subscribe</h3>
+                        </div>
+                        <div class="col-sm-11 center">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 clearfix"></div>
             </div>
-        </form>
+        {% endblock %}
     </div>
-    <div class="col-sm-12 nopadding">
-        <div class="panel panel-green panel-content">
-            <div class="caption text-center">
-                <h3> Join Us </h3>
-            </div>
-            <a href="{{ path('account_register' )}}" class="btn btn-default center-block">Upload your photo!</a>
-        </div>
-    </div>
-    <div class="col-sm-12 nopadding">
-        <div class="panel panel-orange panel-content">
-            <div class="caption text-center">
-                <h3> Join Us </h3>
-            </div>
-            <button class="btn btn-default center-block">Create your blog!</button>
-        </div>
-    </div>
-    <div class="col-sm-12 nopadding">
-        <div class="panel panel-blue panel-content">
-            <div class="caption text-center">
-                <h3> Like Us </h3>
-            </div>
-            <div class="thumbnail">
-                <img src="{{ asset('bundles/balletwaytoc/images/facebk.JPG') }}" alt>
-            </div>
-            <button class="btn btn-primary center-block"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-        </div>
-    </div>
-    <div class="col-sm-12 nopadding">
-        <div class="panel panel-content">
-            <div class="caption text-center">
-                <h3> Join Us </h3>
-            </div>
-            <button class="btn btn-default center-block">Upload your photo!</button>
-        </div>
-    </div>
-    <div class="col-sm-8 clearfix"></div>
 
 {% endblock %}
