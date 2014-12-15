@@ -1,0 +1,7 @@
+Ballet\WaytocBundle\Entity\Image:
+    properties:
+        file:
+            - File:
+                maxSize: 6000000
+#                mimeTypes: ["image/gif", "image/jpeg", "image/png"]
+#                mimeTypesMessage: Please upload a valid image file
