@@ -46,15 +46,13 @@ class ImageController extends Controller
         return $this->render('BalletWaytocBundle:Default:index.html.twig', array('image' => $images));
     }
 
-    public function showImageAction($slug)
+    public function showImageAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $image = $em->getRepository('BalletWaytocBundle:Image')->findOneBy(array('picid' => $slug));
 
+        $this->generateUrl('post_image', array('slug' => $slug));
 
-        $image =  $em->getRepository('BalletWaytocBundle:Image')->findBy(array('picId' => $slug ));
-
-        $this->generateUrl('item', array('slug' => $slug ));
-
-        return $this->render('BalletWaytocBundle:Page:item.html.twig', array('img' => $image, 'slug' => $slug));
+        return $this->render('BalletWaytocBundle:Page:item.html.twig', array('slug' => $slug, 'image' => $image));
     }
 }

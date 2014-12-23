@@ -6,10 +6,9 @@ front_page:
     path:      /waytoc
     defaults:  { _controller: BalletWaytocBundle:Image:showImages }
 
-item:
+post_image:
     path:     /item/{slug}
     defaults: { _controller: BalletWaytocBundle:Image:showImage }
-    methods:   [GET]
 
 about_page:
     path:      /about

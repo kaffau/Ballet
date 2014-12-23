@@ -13,8 +13,7 @@
                                 </li>
                             </ul>
                         </div>
-                        {#<a href="{{ path('item', {'name': img.getpicId}) }}">#}
-                        <a href="">
+                        <a href="{{ path('post_image', {'slug': img.getpicId}) }}">
                             <img src="{{ asset('uploads/images/')}}{{ img.getPath }}" alt="zu" class="img-responsive">
                         </a>
                         <div class="caption text-center">
