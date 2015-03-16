@@ -4,9 +4,44 @@ ballet_waytoc_homepage:
 
 front_page:
     path:      /waytoc
-    defaults:  { _controller: BalletWaytocBundle:Front:index }
+    defaults:  { _controller: BalletWaytocBundle:Image:showImages }
+
+post_image:
+    path:     /item/{slug}
+    defaults: { _controller: BalletWaytocBundle:Image:showImage }
 
 about_page:
     path:      /about
     defaults:  { _controller: BalletWaytocBundle:Front:about  }
+
+info_page:
+    path:      /info
+    defaults:  { _controller: BalletWaytocBundle:Front:info  }
+
+prac:
+    path: /prac
+    defaults: {_controller: BalletWaytocBundle:Front:prac}
+
+#account_register:
+#    path:     /register
+#    defaults: { _controller: BalletWaytocBundle:Account:register }
+#
+#account_create:
+#    path:     /register/create
+#    defaults: { _controller: BalletWaytocBundle:Account:create }
+#
+#login:
+#    pattern:   /login
+#    defaults:  { _controller:  BalletWaytocBundle:Security:login }
+#
+#login_check:
+#    pattern:   /login_check
+#
+#logout:
+#    path:   /logout
+#
+#upload:
+#    path:   /upload
+#    defaults: {_controller: BalletWaytocBundle:Image:upload }
+
 

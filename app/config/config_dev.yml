@@ -8,7 +8,7 @@ framework:
     profiler: { only_exceptions: false }
 
 web_profiler:
-    toolbar: %debug_toolbar%
+    toolbar: false
     intercept_redirects: %debug_redirects%
 
 monolog:

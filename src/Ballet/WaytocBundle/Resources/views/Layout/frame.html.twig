@@ -2,71 +2,39 @@
 <html>
 <head>
     {% block stylesheet %}
-        <link href="{{ asset('bundles/balletwaytoc/css/main.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/balletwaytoc/assets/css/main.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Sofia|Engagement|Leckerli+One|Cookie' rel='stylesheet' type='text/css'>
     {%  endblock %}
 </head>
 <body>
-{% block nav %}
 
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="header-wrap">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ path('front_page') }}">Feed</a></li>
-                        <li><a href="{{ path('about_page') }}">About</a></li>
-                        <li><a href="#about">Faces</a></li>
-                        <li><a href="#contact">Sketches</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-
-            </div>
-        </div>
-    </div>
-
-{% endblock %}
+{% include 'BalletWaytocBundle:Layout:header.html.twig' %}
 
 <div class="container-wrapper">
-
-    {% block logo %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <img class="img-responsive" src="{{ asset('bundles/balletwaytoc/images/title.png') }}" alt="waytoc">
+            {% block content %}
+
+            {% endblock content %}
+
+            <div class="col-sm-3 nopadding clearfix">
+
+                {% block sidebar %}
+                    {% include 'BalletWaytocBundle:Layout:sidebar.html.twig' %}
+                {% endblock %}
+
             </div>
-        </div>
-    {% endblock %}
-
-        <div class="row">
-        {% block content %}
-
-        {% endblock content %}
-
-            <div class="col-sm-4 clearfix">
-        {% block aside %}
-
-        {% endblock %}
-            </div>
-        </div><!-- row -->
-    </div><!-- container -->
-</div><!-- container-wrapper -->
-{% block footer %}
-    <div class="footer-wrap">
-        <div class="footer">
         </div>
     </div>
+</div>
+{% block footer %}
+    <footer class="footer-wrap">
+        <div class="footer">
+        </div>
+    </footer>
 {% endblock %}
 {% block javascript %}
-
+    <script src="{{ asset('bundles/balletwaytoc/assets/js/main.min.js') }}"></script>
 {% endblock %}
 </body>
 </html>
