@@ -3,7 +3,7 @@ ballet_waytoc_homepage:
     defaults: { _controller: BalletWaytocBundle:Default:index }
 
 front_page:
-    path:      /waytoc
+    path:      /
     defaults:  { _controller: BalletWaytocBundle:Image:showImages }
 
 post_image:
@@ -40,8 +40,8 @@ prac:
 #logout:
 #    path:   /logout
 #
-#upload:
-#    path:   /upload
-#    defaults: {_controller: BalletWaytocBundle:Image:upload }
+upload:
+    path:   /upload
+    defaults: {_controller: BalletWaytocBundle:Image:upload }
 
 

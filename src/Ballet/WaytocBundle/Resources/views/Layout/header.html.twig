@@ -20,12 +20,6 @@
                             <a href="{{ path('front_page') }}">Feed</a>
                         </li>
                         <li>
-                            <a href="#about">Faces</a>
-                        </li>
-                        <li>
-                            <a href="#contact">Sketches</a>
-                        </li>
-                        <li>
                             <a href="{{ path('about_page') }}">About</a>
                         </li>
                     </ul>
@@ -37,22 +31,22 @@
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a href="">Settings</a>
+                                            <a href="{{ path('fos_user_profile_edit') }}">Settings</a>
                                         </li>
                                         <li>
-                                          Logout
+                                            <a href="{{ path('fos_user_security_logout') }}">Logout</a>
                                         </li>
                                     </ul>
                                 </li>
                             {% else %}
                             <li>
-                                <a href="" class="btn btn-primary">
+                                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">
                                     <i class="glyphicon glyphicon glyphicon-plus"></i>
                                     Open account
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="btn btn-primary">
+                                <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary">
                                     <i class="glyphicon glyphicon-user"></i>
                                     Sign in
                                 </a>

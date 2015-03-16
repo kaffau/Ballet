@@ -71,3 +71,13 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Ballet\UserBundle\Entity\User
+    registration:
+        confirmation:
+            enabled:    false
+            template:   FOSUserBundle:Registration:email.txt.twig
+    service:
+        mailer:                 fos_user.mailer.default
+        email_canonicalizer:    fos_user.util.canonicalizer.default
+        username_canonicalizer: fos_user.util.canonicalizer.default
+        token_generator:        fos_user.util.token_generator.default
+        user_manager:           fos_user.user_manager.default
