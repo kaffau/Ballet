@@ -3,25 +3,41 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-{% if error %}
-    <div class="alert-warning">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+    {% if error %}
+        <div class="alert-warning">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
     <form action="{{ path("fos_user_security_check") }}" method="post">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <input type="hidden" name="_csrf_token" value="{{csrf_token}}" />
 
         <div class="form-group">
-            <label for="username" class="control-label">{{ 'security.login.username'|trans }}</label>
-            <input type="text" id="username" class="form-control" name="_username" value="{{ last_username }}" required="required" />
+            <input type="text" id="username" class="form-control" name="_username" value="{{ last_username }}" required="required" placeholder="{{'security.login.username'|trans}}"/>
         </div>
 
-        <label for="password" class="control-label">{{ 'security.login.password'|trans }}</label>
-        <input type="password" id="password" class="form-control" name="_password" required="required" />
+        <div class="form-group">
+            <input type="password" id="password" class="form-control" name="_password" required="required" placeholder="{{'security.login.password'|trans}}" />
+        </div>
 
-        <input type="submit" id="_submit" class="btn btn-primary" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <div class="form-group">
+            <input type="submit" id="_submit" class="btn btn-primary form-control" name="_submit" value="{{'security.login.submit'|trans }}" />
+        </div>
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
     </form>
 
+    <a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a>
+
 {% endblock fos_user_content %}
+
+{% block hwi_oauth_content %}
+    {% if error %}
+        <span>{{ error }}</span>
+    {% endif %}
+    {% for owner in hwi_oauth_resource_owners() %}
+        <div class="form-group">
+            <a href="{{ hwi_oauth_login_url(owner) }}" class="btn btn-fb form-control">{{ owner | trans({}, 'HWIOAuthBundle') }}
+                <i class="icon icon-fb"></i>
+            </a>
+        </div>
+    {% endfor %}
+
+{% endblock hwi_oauth_content %}

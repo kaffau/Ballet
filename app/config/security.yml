@@ -8,7 +8,10 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
+#            id: fos_user.user_provider.username
+
+
 
     firewalls:
         main:
@@ -16,8 +19,19 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-                default_target_path: front_page
-            logout:       true
+                login_path: /login
+                check_path: /login_check
+            oauth:
+                resource_owners:
+                    facebook:           "/login/check-facebook"
+                login_path:        /login
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: my_user_provider
+            logout:
+                path:   /logout
+                target: /
             anonymous:    true
 
     access_control:
