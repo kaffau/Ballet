@@ -26,6 +26,9 @@
                         <ul class="navbar navbar-right list-unstyled list-inline">
                             {% if app.user %}
                                 <li>
+                                    <a class="btn btn-primary" href="{{ path('upload') }}">Upload photo</a>
+                                </li>
+                                <li>
                                     <button class="btn btn-default" data-toggle="dropdown">
                                         <i class="glyphicon glyphicon glyphicon-user"></i>
                                     </button>
