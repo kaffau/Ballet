@@ -1,0 +1,18 @@
+user_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UserBundle:Default:index }
+
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /login-fb
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /login-fb
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /login-fb
+
+facebook_login:
+    pattern: /login/check-facebook
