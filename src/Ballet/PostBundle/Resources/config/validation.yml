@@ -1,4 +1,4 @@
-Ballet\WaytocBundle\Entity\Image:
+PostBundle\Entity\PostBundle:
     properties:
         file:
             - File:
@@ -10,5 +10,5 @@ Ballet\WaytocBundle\Entity\Image:
                 minWidth: 320
                 maxHeightMessage: 'The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.'
                 maxWidth: 'The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px'
-#                mimeTypes: ["image/gif", "image/jpeg", "image/png"]
-#                mimeTypesMessage: Please upload a valid image file
+                mimeTypes: ["image/gif", "image/jpeg", "image/png"]
+                mimeTypesMessage: Please upload a valid image file

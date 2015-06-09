@@ -1,0 +1,15 @@
+front_page:
+    path:      /
+    defaults:  { _controller: BalletPostBundle:Default:showImages }
+
+post_image:
+    path:     /item/{slug}
+    defaults: { _controller: BalletPostBundle:Default:showImage }
+
+image_vote:
+    path:     /vote/{slug}
+    defaults: { _controller: BalletPostBundle:Default:vote }
+
+upload:
+    path:   /upload
+    defaults: {_controller: BalletPostBundle:Image:upload }

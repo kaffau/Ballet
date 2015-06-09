@@ -1,17 +1,18 @@
 {% extends 'BalletWaytocBundle:Layout:frame.html.twig' %}
 
 {% block content %}
-    <div class="front-page-wrapper">
-        <div class="col-sm-9 clearfix">
+    <div class="front-page-wrapper clearfix" ng-app="">
+        <div id="feed"  class="col-sm-9 clearfix" ng-controller="SpinnerCtrl">
             {% for img in image %}
-                <div class="col-sm-6 col-xs-12">
+                <div class="item col-xs-12">
                     <div class="thumbnail">
                         <div class="caption text-center">
-                            <ul class="list-inline list-unstyled">
-                                <li>
-                                    <i class="glyphicon glyphicon-unchecked"></i>
-                                </li>
-                            </ul>
+                            <input type="hidden" name="imgId" data-id="{{img.getpicId}}">
+                            <label for="spinner"></label>
+                            <input class="spinner" name="value" ng-model="age">
+                            <button type="submit" class="btn btn-circle">
+                                <i class="fa fa-circle-o"></i>
+                            </button>
                         </div>
                         <a href="{{ path('post_image', {'slug': img.getpicId}) }}">
                             <img src="{{ asset('uploads/images/')}}{{ img.getPath }}" alt="zu" class="img-responsive">
@@ -26,11 +27,7 @@
                 </div>
                 <span></span>
             {% endfor %}
-
-        </div><!-- col-sm-8 -->
-        {% block sidebar_right %}
-
-        {% endblock %}
+        </div>
+        {% block sidebar_right %}{% endblock %}
     </div>
-
 {% endblock %}

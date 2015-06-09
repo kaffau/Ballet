@@ -1,0 +1,66 @@
+.header-wrap {
+    height: 76px;
+    border-bottom: 15px solid rgba($black, .9);
+    @include box-shadow(0px 3px 63px 0px rgba($black, 0.75));
+    background: image-url('header-pattern.png');
+    .navbar {
+        margin-bottom: 0;
+    }
+    .navbar-nav {
+        > li {
+            float: left;
+            padding: 0 12px;
+            margin: -10px 0;
+            @extend .icon-down;
+            background-position: 0 10px;
+            &:first-of-type {
+                background: none;
+                width: auto;
+            }
+            &:hover {
+                @extend .icon-up;
+                &:first-of-type {
+                    background: none;
+                }
+            }
+            > a {
+                line-height: 27px;
+                color: $head-grey;
+                text-align: center;
+                &:hover, &:focus, &:active {
+                    color: $white;
+                }
+            }
+        }
+    }
+    .header-shadow {
+        position: absolute;
+        height: 61px;
+        width: 100%;
+        @include box-shadow(inset 0 0 40px -15px $black);
+    }
+
+    .icon-logo {
+        @include main-sprite('icon-logo');
+        display: inline-block;
+        margin-top: -15px;
+    }
+    .title {
+        font: {
+            family: 'Mr Dafoe', cursive;
+            size: 5em;
+        }
+        color: rgba($black, .8);
+        margin: -.78em 1em 0 0;
+    }
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    margin: 50px 0 0;
+}
+
+.navbar-default {
+    border: none;
+    background: transparent;
+}
+

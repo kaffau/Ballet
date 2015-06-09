@@ -1,10 +1,9 @@
 <?php
 
-namespace Ballet\WaytocBundle\Entity;
+namespace Ballet\PostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -32,12 +31,12 @@ class Image
     /**
      * @var integer
      */
-    private $picid;
+    private $picId;
 
     /**
      * @var integer
      */
-    private $userid;
+    private $userId;
 
     /**
      * @var integer
@@ -47,45 +46,62 @@ class Image
     /**
      * @var integer
      */
-    private $uploaddate;
+    private $uploadDate;
+
+    /**
+     * @var integer
+     */
+    private $avrAge;
 
 
     public function __construct()
     {
-//        $this->userid = 96;
-        $this->uploaddate = new \DateTime('now');;
+        $this->uploadDate = new \DateTime('now');;
+
     }
+
+
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            //$this->path = uniqid().'.'.$this->file->guessExtension();
+            //$this->path = uniqid().'.'.'jpg';
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->path = $filename.'.'.$this->file->guessExtension();
+        }
+    }
+
     /**
      * Get picid
      *
      * @return integer 
      */
-    public function getPicid()
+    public function getPicId()
     {
-        return $this->picid;
+        return $this->picId;
     }
 
     /**
-     * Set userid
+     * Set userId
      *
-     * @param integer $userid
+     * @param integer $userId
      * @return Image
      */
-    public function setUserid($userid)
+    public function setUserId($userId)
     {
-        $this->userid = $userid;
+        $this->userId = $userId;
 
         return $this;
     }
 
     /**
-     * Get userid
+     * Get userId
      *
      * @return integer 
      */
-    public function getUserid()
+    public function getUserId()
     {
-        return $this->userid;
+        return $this->userId;
     }
 
     /**
@@ -150,15 +166,11 @@ class Image
 
     protected function getUploadRootDir()
     {
-        // the absolute directory path where uploaded
-        // documents should be saved
         return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
         return 'uploads/images';
     }
 
@@ -182,14 +194,6 @@ class Image
         return $this->file;
     }
 
-    public function preUpload()
-    {
-        if (null !== $this->file) {
-            // do whatever you want to generate a unique name
-            $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = $filename.'.'.$this->file->guessExtension();
-        }
-    }
 
     public function removeUpload()
     {
@@ -223,12 +227,11 @@ class Image
         if (null === $this->getFile()) {
             return;
         }
-        $this->preUpload();
         $this->getFile()->move(
             $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
+            $this->path
         );
-        $this->path = $this->getFile()->getClientOriginalName();
+
         $this->file = null;
     }
 
@@ -238,10 +241,9 @@ class Image
      * @param \DateTime $uploaddate
      * @return Image
      */
-    public function setUploaddate($uploaddate)
+    public function setUploadDate($uploadDate)
     {
-        $this->uploaddate = $uploaddate;
-
+        $this->uploadDate = $uploadDate;
         return $this;
     }
 
@@ -250,8 +252,23 @@ class Image
      *
      * @return \DateTime 
      */
-    public function getUploaddate()
+    public function getUploadDate()
     {
-        return $this->uploaddate;
+        return $this->uploadDate;
+    }
+
+    /**
+     * Get avrAge
+     *
+     * @return \DateTime
+     */
+    public function getAvrAge()
+    {
+        return $this->avrAge;
+    }
+
+    public function setAvrAge($avrAge)
+    {
+        $this->avrAge = $avrAge;
     }
 }

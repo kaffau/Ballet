@@ -18,8 +18,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Ballet\WaytocBundle\BalletWaytocBundle(),
             new Ballet\UserBundle\UserBundle(),
+            new Ballet\PostBundle\BalletPostBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
