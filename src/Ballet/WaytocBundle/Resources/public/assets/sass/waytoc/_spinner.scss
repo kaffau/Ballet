@@ -14,11 +14,8 @@
     top: -22px;
     margin-left: -38px;
     color: rgba(lightblue, 0.6);
-    &:focus, &::-moz-focus-inner {
+    &:focus, &:active {
         color: red;
-        outline:none;
-        border:0;
-        -moz-outline-style: none;
     }
 }
 
@@ -38,7 +35,7 @@
     color: $black;
     position: relative;
     top: 5px;
-    left: -10px;
+    left: 0;
     &:hover {
         color: $black;
         text-decoration: none;
@@ -54,6 +51,6 @@
     border: 1px solid rgba($black, 0.1);
     border-right: 0;
     @extend .fa-minus;
-    right: -10px;
+    right: 0;
     left: auto;
 }

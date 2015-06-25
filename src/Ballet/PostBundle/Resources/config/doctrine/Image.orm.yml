@@ -23,12 +23,12 @@ Ballet\PostBundle\Entity\Image:
             fixed: false
         description:
             type: string
-            nullable: false
+            nullable: true
             length: 500
             fixed: false
         path:
             type: string
-            nullable: false
+            nullable: true
             length: 255
             fixed: false
         uploadDate:

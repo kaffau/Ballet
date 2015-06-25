@@ -1,18 +1,19 @@
 {% extends 'BalletWaytocBundle:Layout:frame.html.twig' %}
 
 {% block content %}
-    <div class="front-page-wrapper clearfix" ng-app="">
-        <div id="feed"  class="col-sm-9 clearfix" ng-controller="SpinnerCtrl">
+    <div class="front-page-wrapper clearfix">
+        <div id="feed"  class="col-sm-9 clearfix">
             {% for img in image %}
                 <div class="item col-xs-12">
                     <div class="thumbnail">
+                        {#{{ form(form) }}#}
                         <div class="caption text-center">
                             <input type="hidden" name="imgId" data-id="{{img.getpicId}}">
                             <label for="spinner"></label>
-                            <input class="spinner" name="value" ng-model="age">
-                            <button type="submit" class="btn btn-circle">
+                            <input class="spinner" name="value">
+                            <a href="{{ path('image_vote', {'slug': img.getpicId}) }}" type="submit" class="btn btn-circle">
                                 <i class="fa fa-circle-o"></i>
-                            </button>
+                            </a>
                         </div>
                         <a href="{{ path('post_image', {'slug': img.getpicId}) }}">
                             <img src="{{ asset('uploads/images/')}}{{ img.getPath }}" alt="zu" class="img-responsive">
