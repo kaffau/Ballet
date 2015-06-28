@@ -39,4 +39,8 @@ Ballet\PostBundle\Entity\Image:
             type: bigint
             nullable: true
             column: avrAge
+        voters:
+            type: bigint
+            nullable: true
+            column: voters
     lifecycleCallbacks: {  }

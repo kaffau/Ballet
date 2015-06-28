@@ -4,12 +4,27 @@
     <div class="col-sm-10 clearfix">
             <div class="col-sm-10 col-xs-12">
                 <div class="thumbnail">
+                    <div class="caption text-center">
+                        {% set cookieName = 'age' ~ image.getpicId %}
+                        {% if app.request.cookies.has(cookieName) %}
+                        {% else %}
+                            <input type="hidden" name="imgId" data-id="{{image.getpicId}}">
+                            <label for="spinner"></label>
+                            <input class="spinner" name="value">
+                            <a href="{{ path('image_vote', {'slug': image.getpicId}) }}" type="submit" class="btn btn-circle">
+                                <i class="fa fa-circle-o"></i>
+                            </a>
+                        {% endif %}
+                    </div>
                     <img src="{{ asset('uploads/images/')}}{{ image.getPath }}" alt="zu" class="img-responsive">
                     <div class="caption text-center">
                         <h4>{{ image.name|default('Empty')}}</h4>
                         <p class="description">
                             {{ image.description|default('No description')}}
                         </p>
+                        {%if age %}
+                            {{  age|round(0, 'floor') }}
+                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -53,6 +53,10 @@ class Image
      */
     private $avrAge;
 
+    /**
+     * @var integer
+     */
+    private $voters;
 
     public function __construct()
     {
@@ -270,5 +274,15 @@ class Image
     public function setAvrAge($avrAge)
     {
         $this->avrAge = $avrAge;
+    }
+
+    public function getVoters()
+    {
+        return $this->voters;
+    }
+
+    public function setVoters()
+    {
+        $this->voters = $this->voters + 1;
     }
 }
