@@ -1,6 +1,9 @@
-var $container = $('#feed');
-$container.masonry({
-    itemSelector: '.item'
+var $grid = $('#feed').imagesLoaded( function() {
+    $grid.masonry({
+        itemSelector: '.item',
+        percentPosition: true
+        //columnWidth: '.col-lg-6'
+    });
 });
 
 var spinner = $(".spinner").spinner({min: 16, max: 60}).val(26);

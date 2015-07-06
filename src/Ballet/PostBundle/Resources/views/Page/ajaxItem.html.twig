@@ -1,0 +1,27 @@
+{% for img in image %}
+    <div class="item col-xs-12">
+        <div class="thumbnail">
+            <div class="caption text-center">
+                {% set cookieName = 'age' ~ img.getpicId %}
+                {% if app.request.cookies.has(cookieName) %}
+                {% else %}
+                    <input type="hidden" name="imgId" data-id="{{img.getpicId}}">
+                    <label for="spinner"></label>
+                    <input class="spinner" name="value">
+                    <a href="{{path('image_vote', {'slug': img.getpicId})}}" type="submit" class="btn btn-circle">
+                        <i class="fa fa-circle-o"></i>
+                    </a>
+                {% endif %}
+            </div>
+            <a href="{{path('post_image', {'slug': img.getpicId})}}">
+                <img src="{{ asset('uploads/images/')}}{{img.getPath}}" alt="zu" class="img-responsive">
+            </a>
+            <div class="caption text-center">
+                <h4>{{img.name|default('Empty')}}</h4>
+                <p class="description">
+                    {{img.description|default('No description')}}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endfor %}

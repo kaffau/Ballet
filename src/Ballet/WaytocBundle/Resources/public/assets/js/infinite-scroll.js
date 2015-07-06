@@ -1,36 +1,52 @@
 is_processing = false;
 last_page = false;
+var page = 2;
 function addMoreElements() {
     is_processing = true;
     $href = $(location).attr('href');
+
+    var loader = $("#loader");
+    var data = {page : page};
+
+
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: $href,
         dataType: 'json',
+        data: data,
+        beforeSend: function() {
+            loader.show();
+        },
+        complete: function(){
+            loader.hide();
+        },
         success: function(data) {
-            var count = data.image.length;
+            var count = data.length;
             if(!count) {
+                last_page = true;
                 return;
             }
+            page = page + 1;
             var $grid = $('#feed');
-            var appended;
-            data.image.forEach(function (item) {
-               $item = $('<div class="item col-xs-12"><div class="thumbnail"><div class="caption text-center">' + item.name + '</div></div></div>');
-                $grid.append($item).masonry('appended',$item);
+            //$grid.append(data).masonry("reloadItems").masonry();
+            $grid.append(data);
+            $grid.imagesLoaded( function() {
+                $grid.masonry('reloadItems').masonry({
+                    transitionDuration: '1.0s',
+                    isAnimatedFromBottom: true
+                });
             });
+            var spinner = $(".spinner").spinner({min: 16, max: 60}).val(26);
 
-            //if (data.html.length > 0) {
-            //    $('#feed').append(data.html);
-            //    page = page + 1;
-            //    last_page = data.last_page;
-            //} else {
-            //    last_page = true;
-            //}
+
+            //last_page = data.last_page;
             is_processing = false;
         },
         error: function(data) {
+            console.log("failed");
             is_processing = false;
         }
+
     });
 }
 

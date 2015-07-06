@@ -23,12 +23,10 @@
                             {{ image.description|default('No description')}}
                         </p>
                         {%if age %}
-                            {{  age|round(0, 'floor') }}
+                            {{age|round(0,'floor')}}
                         {% endif %}
                     </div>
                 </div>
             </div>
-            <span></span>
-
     </div><!-- col-sm-8 -->
 {% endblock %}

@@ -13,3 +13,7 @@ image_vote:
 upload:
     path:   /upload
     defaults: {_controller: BalletPostBundle:Image:upload }
+
+#ajax_action:
+#    path:      /
+#    defaults:  { _controller: BalletPostBundle:Page:ajaxItem }

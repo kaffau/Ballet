@@ -19,16 +19,26 @@ class DefaultController extends Controller
 
     public function showImagesAction(Request $request)
     {
+
+        $currentPage = 0;
+        $itemsPerPage = 6;
+
+        $currentPage = $currentPage + 1;
+        $offset = $itemsPerPage * ($currentPage - 1);
         $images = $this->getDoctrine()
-            ->getRepository('BalletPostBundle:Image')->findBy(array(),array('picId' => 'DESC'));
+            ->getRepository('BalletPostBundle:Image')->findBy(array(),array('picId' => 'DESC'), $itemsPerPage, $offset);
         $total = count($images);
-        $itemsPerPage = 10;
         $totalPage = ceil($total / $itemsPerPage);
-        $currentPage = 2;
-        $query = $itemsPerPage * ($currentPage - 1);
         if ($request->isXmlHttpRequest()) {
-            $response = new Response(json_encode(array('image' => $images)));
+            $currentPage = $request->request->get('page');
+            $offset = $itemsPerPage * ($currentPage - 1);
+            $images = $this->getDoctrine()
+                ->getRepository('BalletPostBundle:Image')->findBy(array(),array('picId' => 'DESC'), $itemsPerPage, $offset);
+            $template = $this->renderView('BalletPostBundle:Page:ajaxItem.html.twig', array( 'image' => $images) );
+            $json = json_encode($template);
+            $response = new Response($json);
             $response->headers->set('Content-Type', 'application/json');
+
             return $response;
         }
         return $this->render('BalletWaytocBundle:Default:index.html.twig', array('image' => $images));
