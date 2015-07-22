@@ -52,6 +52,9 @@
         }
         color: rgba($black, .8);
         margin: -.78em 1em 0 0;
+        @media screen and (max-width: 998px) {
+            margin: -.78em 0 0 0;
+        }
     }
 }
 

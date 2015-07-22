@@ -29,8 +29,30 @@
 </div>
 {% block footer %}
     <footer class="footer-wrap">
-        <div class="footer">
-        </div>
+        <section class="container pt30">
+            <ul class="list-unstyled list-inline social-icons pull-left">
+                <li>
+                    <a href="https://www.facebook.com/KaunasStreetStyle" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.pinterest.com/source/waytoc.com/" target="_blank">
+                        <i class="fa fa-pinterest"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instragram.com" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="list-inline pull-right mt10">
+                <li class="white-smoke">
+                    <i class="fa fa-copyright white-smoke"></i> {{"now"|date('Y') }} Waytoc.com. All rights reserved.
+                </li>
+            </ul>
+        </section>
     </footer>
 {% endblock %}
 {% block javascript %}

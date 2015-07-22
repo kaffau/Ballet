@@ -1,0 +1,17 @@
+{% extends 'BalletWaytocBundle:Layout:frame.html.twig' %}
+
+{% block content %}
+{% for image in images %}
+    <article class="col-lg-4  col-xs-12">
+        <div class="thumbnail">
+            <a href="{{path('post_image', {'slug': image.getpicId})}}">
+                <img src="{{ asset('uploads/images/')}}{{image.getPath}}" alt="zu" class="img-responsive">
+            </a>
+            <div class="caption text-center">
+                <h4>{{image.name|default('Empty')}}</h4>
+            </div>
+        </div>
+    </article>
+{% endfor %}
+        {% block sidebar_right %}{% endblock %}
+{% endblock %}

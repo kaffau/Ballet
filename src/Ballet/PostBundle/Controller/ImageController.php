@@ -40,4 +40,24 @@ class ImageController extends Controller
         );
     }
 
+    public function showUserImagesAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $images = $em->getRepository('BalletPostBundle:Image')
+            ->findBy(array(
+                'userId' => $slug
+            ));
+        return $this->render(
+            'BalletPostBundle:Page:images.html.twig',
+            array(
+                'images' => $images
+            )
+        );
+    }
+
+    public function deleteAction($slug)
+    {
+
+    }
+
 }

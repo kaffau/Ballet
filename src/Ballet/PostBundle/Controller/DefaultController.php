@@ -21,7 +21,7 @@ class DefaultController extends Controller
     {
 
         $currentPage = 0;
-        $itemsPerPage = 6;
+        $itemsPerPage = 10;
 
         $currentPage = $currentPage + 1;
         $offset = $itemsPerPage * ($currentPage - 1);

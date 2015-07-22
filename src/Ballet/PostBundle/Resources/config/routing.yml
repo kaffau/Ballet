@@ -14,6 +14,12 @@ upload:
     path:   /upload
     defaults: {_controller: BalletPostBundle:Image:upload }
 
-#ajax_action:
-#    path:      /
-#    defaults:  { _controller: BalletPostBundle:Page:ajaxItem }
+images:
+    path:      /images/{slug}
+    defaults:  { _controller: BalletPostBundle:Image:showUserImages }
+
+delete:
+    path:      /delete/{slug}
+    defaults:  { _controller: BalletPostBundle:Image:delete }
+
+

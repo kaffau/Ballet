@@ -19,6 +19,22 @@ html, body {
     }
 }
 
+.social-icons {
+    a {
+        font: {
+            size: 4rem;
+        }
+        color: rgba($white, 0.8);
+
+        &:hover {
+            color: rgba($white, 0.9);
+        }
+        &:active, &:focus {
+            color: $white;
+        }
+    }
+}
+
 body:before {
     content: "";
     height: 100%;

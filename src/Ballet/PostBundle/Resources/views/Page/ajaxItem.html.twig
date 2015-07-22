@@ -1,5 +1,5 @@
 {% for img in image %}
-    <div class="item col-xs-12">
+    <article class="item col-xs-12">
         <div class="thumbnail">
             <div class="caption text-center">
                 {% set cookieName = 'age' ~ img.getpicId %}
@@ -18,10 +18,7 @@
             </a>
             <div class="caption text-center">
                 <h4>{{img.name|default('Empty')}}</h4>
-                <p class="description">
-                    {{img.description|default('No description')}}
-                </p>
             </div>
         </div>
-    </div>
+    </article>
 {% endfor %}
