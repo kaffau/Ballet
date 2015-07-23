@@ -95,14 +95,14 @@
 //   -moz-column-count: 2;
 //    -webkit-column-count: 2;
 //    column-count: 2;
+//    overflow: auto;
+//    .item {
+//        display: inline-block;
+//        width: 100%;
+//    }
 //}
-//
-//.item { /* Masonry bricks or child elements */
-//    background-color: #eee;
-//    display: inline-block;
-//    margin: 0 0 1em;
-//    width: 100%;
-//}
+
+
 
 .btn-waytoc {
     &.white {
@@ -135,4 +135,15 @@
     padding-top: 30px;
 }
 
+.black {
+    color: black;
+}
+
 html { overflow-y: scroll; }
+
+a {
+    color: #000;
+    &:hover {
+        color: rgba(#000, 0.8);
+    }
+}

@@ -28,8 +28,7 @@ function addMoreElements() {
             }
             page = page + 1;
             var $grid = $('#feed');
-            //$grid.append(data).masonry("reloadItems").masonry();
-            $grid.append(data);
+            $grid.after().append(data);
             $grid.imagesLoaded( function() {
                 $grid.masonry('reloadItems').masonry({
                     transitionDuration: '1.0s',
