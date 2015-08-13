@@ -1,14 +1,14 @@
-PostBundle\Entity\PostBundle:
-    properties:
-        file:
-            - File:
-                maxSize: 6000000
-            - Image:
-                maxHeight: 800
-                maxWidth: 800
-                minHeight: 320
-                minWidth: 320
-                maxHeightMessage: 'The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.'
-                maxWidth: 'The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px'
-                mimeTypes: ["image/gif", "image/jpeg", "image/png"]
-                mimeTypesMessage: Please upload a valid image file
+#PostBundle\Entity\PostBundle:
+#    properties:
+#        file:
+#            - File:
+#                maxSize: 6000000
+#            - Image:
+#                maxHeight: 800
+#                maxWidth: 800
+#                minHeight: 320
+#                minWidth: 320
+#                maxHeightMessage: 'The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.'
+#                maxWidth: 'The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px'
+#                mimeTypes: ["image/gif", "image/jpeg", "image/png"]
+#                mimeTypesMessage: Please upload a valid image file

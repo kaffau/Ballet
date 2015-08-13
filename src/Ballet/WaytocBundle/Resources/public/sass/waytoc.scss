@@ -64,3 +64,7 @@
 .nopadding{
   padding-left: 0;
 }
+
+.input-lg, .form-group-lg .form-control {
+  @include border-radius(0);
+}

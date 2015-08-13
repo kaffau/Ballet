@@ -4,6 +4,8 @@ namespace Ballet\PostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\MimeType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -23,9 +25,7 @@ class Image
      * @var string
      */
     public $path;
-    /*
-     * @var string
-     */
+
     private $file;
 
     /**
@@ -68,15 +68,13 @@ class Image
     public function preUpload()
     {
         if (null !== $this->file) {
-            //$this->path = uniqid().'.'.$this->file->guessExtension();
-            //$this->path = uniqid().'.'.'jpg';
             $filename = sha1(uniqid(mt_rand(), true));
             $this->path = $filename.'.'.$this->file->guessExtension();
         }
     }
 
     /**
-     * Get picid
+     * Get picId
      *
      * @return integer 
      */
@@ -165,17 +163,17 @@ class Image
     {
         return null === $this->path
             ? null
-            : $this->getUploadDir().'/'.$this->path;
+            : $this->getTmpDir().'/'.$this->path;
     }
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../../web/'.$this->getTmpDir();
     }
 
-    protected function getUploadDir()
+    protected function getTmpDir()
     {
-        return 'uploads/images';
+        return 'images';
     }
 
     /**
