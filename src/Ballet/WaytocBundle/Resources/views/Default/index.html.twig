@@ -19,7 +19,8 @@
                             {% endif %}
                         </div>
                         <a href="{{path('post_image', {'slug': img.getpicId})}}">
-                            <img src="{{ asset('media/cache/thumb_lg/images/')}}{{img.getPath}}" alt="zu" class="img-responsive">
+                            <img srcset="{{ asset('media/cache/thumb_lg/images/')}}{{ img.getPath }} 610w, {{ asset('media/cache/thumb_md/images/')}}{{ img.getPath }} 1x"
+                                 src="{{ asset('media/cache/thumb_md/images/')}}{{ img.getPath }}" class="img-responsive">
                         </a>
                         <div class="caption text-center">
                             <h4>{{img.name|default('Empty')}}</h4>
