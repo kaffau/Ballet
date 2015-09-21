@@ -14,7 +14,7 @@ html, body {
 .container-wrapper {
     min-height: 100%;
     > .container {
-        overflow: auto;
+        overflow: hidden;
         padding-bottom: 180px;
     }
 }

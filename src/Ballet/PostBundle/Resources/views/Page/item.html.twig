@@ -23,9 +23,11 @@
                 <div class="caption text-center">
                     <h4>{{ image.name|default('Empty')}}</h4>
                     <p class="description">
-                        {{ image.description|default('No description')}}
+                        {% if image.description  %}
+                            {{ image.description|default('No description')}}
+                        {% endif %}
                     </p>
-                    {%if age %}
+                    {% if age %}
                         {{age|round(0,'floor')}}
                     {% endif %}
                 </div>

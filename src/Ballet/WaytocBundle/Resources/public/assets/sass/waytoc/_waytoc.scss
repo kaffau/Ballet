@@ -25,9 +25,9 @@
 }
 
 .container-wrapper {
-    margin-top: -2em;
+    margin-top: -3em;
     padding-top: 4em;
-    background: rgba($light-grey, .8);
+    background: #F3F4F5;
 }
 
 .mt10 {
@@ -135,11 +135,19 @@
     padding-top: 30px;
 }
 
+.radius4 {
+    @include border-radius(4px);
+}
+
+.relative {
+    position: relative;
+}
+
 .black {
     color: black;
 }
 
-html { overflow-y: scroll; }
+html {  overflow: auto;}
 
 a {
     color: #000;
@@ -150,4 +158,15 @@ a {
 
 .fz4 {
     font-size: 4em;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mh115 {
+    max-height: 115px;
+}
+.dropdown-menu, .input-lg, .form-group-lg .form-control {
+    @include border-radius(0);
 }

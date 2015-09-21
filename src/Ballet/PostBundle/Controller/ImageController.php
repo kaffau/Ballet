@@ -5,7 +5,10 @@ namespace Ballet\PostBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Ballet\PostBundle\Entity\Image;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class ImageController extends Controller
 {
@@ -15,7 +18,10 @@ class ImageController extends Controller
         $form = $this->createFormBuilder($image)
             ->add('name')
             ->add('description')
-            ->add('file', 'file')
+            ->add('file', 'file', array(
+                    'constraints' => new NotBlank(),
+                )
+                 )
             ->add('upload', 'submit')
             ->getForm();
 
@@ -82,5 +88,24 @@ class ImageController extends Controller
             )
         );
     }
+
+    public function deleteImageAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $image = $em->getRepository('BalletPostBundle:Image')
+            ->findOneBy(array(
+                'picId' => $slug
+            ));
+        $image->removeThumbnail('thumb_sm');
+        $image->removeThumbnail('thumb_md');
+        $image->removeThumbnail('thumb_lg');
+        $em->remove($image);
+        $em->flush();
+
+
+        return $this->redirect($this->generateUrl('images', array('slug'=> $image->getUserId())));
+
+    }
+
 
 }

@@ -83,4 +83,11 @@ class DefaultController extends Controller
 
     }
 
+    public function aboutAction(Request $request)
+    {
+        $info = "Waytoc (way to see) is a project of young people from Kaunas, Lithuania, that shows you the way how we see the beauty of lithuanian people. The main purpose of this website is to show the atmosphere of Kaunas streets, which people create through their outfits.";
+        return $this->render('BalletWaytocBundle:Page:about.html.twig', array('info' => $info));
+    }
+
+
 }

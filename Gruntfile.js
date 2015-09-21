@@ -37,10 +37,12 @@ module.exports = function (grunt) {
                     'web/bundles/balletwaytoc/assets/js/jquery.ui.js',
                     'web/bundles/balletwaytoc/assets/js/jquery.mousewheel.min.js',
                     'web/bundles/balletwaytoc/assets/js/bootstrap.min.js',
-                    'web/bundles/balletwaytoc/assets/js/dropzone.js',
                     'web/bundles/balletwaytoc/assets/js/masonry.min.js',
+                    'web/bundles/balletwaytoc/assets/js/scroll-frame-head.js',
+                    'web/bundles/balletwaytoc/assets/js/scroll-frame.js',
                     'web/bundles/balletwaytoc/assets/js/imagesLoaded.js',
                     'web/bundles/balletwaytoc/assets/js/infinite-scroll.js',
+                    'web/bundles/balletwaytoc/assets/js/dropzone.js',
                     'web/bundles/balletwaytoc/assets/js/app.js'
                 ],
                 dest: 'web/bundles/balletwaytoc/assets/js/main.js'

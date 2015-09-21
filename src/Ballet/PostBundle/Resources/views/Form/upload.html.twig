@@ -1,22 +1,18 @@
 {% extends 'BalletWaytocBundle:Layout:frame.html.twig' %}
 {% block content %}
-    <div class="col-sm-6 center">
-        {{ form_start(form) }}
-            <div class="form-group-lg">
-                {{ form_label(form.name) }}
-                {{ form_widget(form.name , { 'attr': {'class': 'form-control'} }) }}
+    <div class="col-sm-6">
+        {{ form_start(form , { 'attr': {'class': 'dropzone'} }) }}
+            <div class="form-group-lg mb15">
+                {{ form_widget(form.name , { 'attr': {'class': 'form-control', 'placeholder':'Enter title here'} }) }}
             </div>
-            <div class="form-group-lg">
-                {{ form_label(form.description) }}
-                {{ form_widget(form.description , { 'attr': {'class': 'form-control'} }) }}
+            <div class="form-group-lg mb15">
+                {{ form_widget(form.description , { 'attr': {'class': 'form-control', 'placeholder':'Tell something about you and your style'} }) }}
             </div>
-            <div class="form-group-lg">
-                {{ form_label(form.file) }}
-                {{ form_widget(form.file , { 'attr': {'class': 'form-control'} }) }}
-            </div>
-            <div class="form-group-lg btn-center">
+            <div class="dropzone-preview clearfix"></div>
+            {{ form_widget(form.file , { 'attr': {'class': 'form-control'} }) }}
+            <div class="form-group-lg mb15 clearfix">
                 {{ form_label(form.upload) }}
-                {{ form_widget(form.upload , { 'attr': {'class': 'btn btn-primary'} }) }}
+                {{ form_widget(form.upload , { 'attr': {'class': 'btn btn-lg btn-primary col-lg-12'} }) }}
             </div>
         {{ form_end(form) }}
     </div>

@@ -20,6 +20,10 @@ images:
 
 delete:
     path:      /delete/{slug}
-    defaults:  { _controller: BalletPostBundle:Image:delete }
+    defaults:  { _controller: BalletPostBundle:Image:deleteImage }
+
+about:
+    path: /about
+    defaults: {_controller: BalletPostBundle:Default:about}
 
 

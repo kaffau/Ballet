@@ -26,6 +26,16 @@ class Image
      */
     public $path;
 
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Image(
+     *     maxSize= "3072k",
+     *     minWidth = 200,
+     *     maxWidth = 4000,
+     *     minHeight = 200,
+     *     maxHeight = 4000
+     * )
+     */
     private $file;
 
     /**
@@ -166,6 +176,10 @@ class Image
             : $this->getTmpDir().'/'.$this->path;
     }
 
+    public function getThumbnailPath($thumbnailSize) {
+        return 'media/cache/' . $thumbnailSize . '/images/' . $this->path;
+    }
+
     protected function getUploadRootDir()
     {
         return __DIR__.'/../../../../web/'.$this->getTmpDir();
@@ -200,6 +214,13 @@ class Image
     public function removeUpload()
     {
         if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+
+    public function removeThumbnail($thumbnailSize)
+    {
+        if ($file = $this->getThumbnailPath($thumbnailSize)) {
             unlink($file);
         }
     }
