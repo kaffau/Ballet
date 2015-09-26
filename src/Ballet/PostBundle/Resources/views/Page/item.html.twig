@@ -22,14 +22,28 @@
                      alt="{{ image.getName }}" class="img-responsive">
                 <div class="caption text-center">
                     <h4>{{ image.name|default('Empty')}}</h4>
-                    <p class="description">
-                        {% if image.description  %}
+                    {% if image.description  %}
+                        <p class="description">
+                            <i class="fa fa-quote-left black half"></i>
                             {{ image.description|default('No description')}}
-                        {% endif %}
-                    </p>
-                    {% if age %}
-                        {{age|round(0,'floor')}}
+                            <i class="fa fa-quote-right black half"></i>
+                        </p>
                     {% endif %}
+                    <ul class="list-unstyled list-inline pull-right">
+                        {% if age %}
+                            <li>
+                                <i class="fa fa-bar-chart"></i>
+                                {{age|round(0,'floor')}}
+                            </li>
+                        {% endif %}
+                        {% if image.getLikes %}
+                            <li>
+                                <i class="fa fa-heart"></i>
+                                {{ image.getLikes|default('0')}}
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>

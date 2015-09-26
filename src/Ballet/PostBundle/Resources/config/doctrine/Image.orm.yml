@@ -5,7 +5,8 @@ Ballet\PostBundle\Entity\Image:
         picId:
             type: integer
             nullable: false
-            unsigned: false
+            options:
+                unsigned: false
             id: true
             column: picId
             generator:
@@ -14,23 +15,27 @@ Ballet\PostBundle\Entity\Image:
         userId:
             type: bigint
             nullable: false
-            unsigned: false
+            options:
+                unsigned: false
             column: userId
         name:
             type: string
             nullable: false
             length: 255
-            fixed: false
+            options:
+                fixed: false
         description:
             type: string
             nullable: true
             length: 500
-            fixed: false
+            options:
+                fixed: false
         path:
             type: string
             nullable: true
             length: 255
-            fixed: false
+            options:
+                fixed: false
         uploadDate:
             type: datetime
             nullable: true
@@ -38,9 +43,17 @@ Ballet\PostBundle\Entity\Image:
         avrAge:
             type: bigint
             nullable: true
+            options:
+                unsigned: false
             column: avrAge
         voters:
             type: bigint
             nullable: true
-            column: voters
+            options:
+                unsigned: false
+        likes:
+            type: bigint
+            nullable: truetrue
+            options:
+                unsigned: false
     lifecycleCallbacks: {  }

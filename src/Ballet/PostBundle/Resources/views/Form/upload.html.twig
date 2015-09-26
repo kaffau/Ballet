@@ -14,6 +14,7 @@
                 {{ form_label(form.upload) }}
                 {{ form_widget(form.upload , { 'attr': {'class': 'btn btn-lg btn-primary col-lg-12'} }) }}
             </div>
+            <input type="hidden" class="after-upload" data-redirect="{{ path('images', {'slug': app.user.id}) }}">
         {{ form_end(form) }}
     </div>
 {% endblock %}

@@ -83,6 +83,41 @@ class DefaultController extends Controller
 
     }
 
+    public function likeAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $image = $this->getDoctrine()->getRepository('BalletPostBundle:Image')->find($slug);
+        $response = new Response();
+
+        $image->setLike();
+        $em->persist($image);
+        $em->flush();
+
+        $key = 'voter' . $image->getPicId() ;
+        $time = time() + (86400 * 365 * 2);
+        $response->headers->setCookie(new Cookie($key, true, $time));
+
+        return $response;
+
+    }
+
+    public function unlikeAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $image = $this->getDoctrine()->getRepository('BalletPostBundle:Image')->find($slug);
+        $response = new Response();
+
+        $image->unLike();
+        $em->persist($image);
+        $em->flush();
+
+        $key = 'voter' . $image->getPicId() ;
+        $response->headers->clearCookie($key);
+
+        return $response;
+
+    }
+
     public function aboutAction(Request $request)
     {
         $info = "Waytoc (way to see) is a project of young people from Kaunas, Lithuania, that shows you the way how we see the beauty of lithuanian people. The main purpose of this website is to show the atmosphere of Kaunas streets, which people create through their outfits.";

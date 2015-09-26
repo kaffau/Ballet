@@ -12,7 +12,7 @@ if(feed.length) {
 var spinner = $(".spinner").spinner({min: 16, max: 90}).val(26);
 
 $(function() {
-    $(".btn-circle").on("click", function(e) {
+    $("body").on("click",".btn-circle", function(e) {
         e.preventDefault();
         var caption = $(this).closest(".caption");
         var ageValue = $(this).closest(".thumbnail").find('.spinner').spinner().val();
@@ -25,7 +25,34 @@ $(function() {
             data: data,
             success: function (data) {
                 caption.empty();
-                caption.append('<h3>Thank you!</h3>');
+                caption.append('<h4>Thank you!</h4>').hide().fadeIn(2000);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log('Error : ' + errorThrown);
+            }
+        })
+    });
+
+    $("body").on("click",".btn-like", function(e) {
+        e.preventDefault();
+        var $href = $(this).attr('href');
+        var self = $(this);
+        $.ajax({
+            type: 'POST',
+            url: $href,
+            beforeSend: function() {
+                if(self.children().hasClass("fa-heart-o")) {
+                    self.children().removeClass().addClass("fa fa-heart");
+                    var unlike = self.data("unlike");
+                    self.attr("href", unlike);
+                }
+                else {
+                    self.children().removeClass().addClass("fa fa-heart-o");
+                    var like = self.data("like");
+                    self.attr("href", like);
+                }
+            },
+            success: function (data) {
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log('Error : ' + errorThrown);
@@ -66,10 +93,10 @@ $(document).ready(function(){
                     done("Invalid dimensions!");
                 }
                 else {
-                    done(); }
+                    done();
+                }
             },
             success: function() {
-                alert("success");
             }
         });
     }

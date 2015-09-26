@@ -20,7 +20,7 @@ class ImageController extends Controller
             ->add('description')
             ->add('file', 'file', array(
                     'constraints' => new NotBlank(),
-                )
+                    )
                  )
             ->add('upload', 'submit')
             ->getForm();

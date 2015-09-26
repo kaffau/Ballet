@@ -68,6 +68,11 @@ class Image
      */
     private $voters;
 
+    /**
+     * @var integer
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->uploadDate = new \DateTime('now');;
@@ -303,5 +308,20 @@ class Image
     public function setVoters()
     {
         $this->voters = $this->voters + 1;
+    }
+
+    public function setLike()
+    {
+        $this->likes = $this->likes + 1;
+    }
+
+    public function unLike()
+    {
+        $this->likes = $this->likes - 1;
+    }
+
+    public function getLikes()
+    {
+        return $this->likes;
     }
 }

@@ -10,6 +10,14 @@ image_vote:
     path:     /vote/{slug}
     defaults: { _controller: BalletPostBundle:Default:vote }
 
+like:
+    path:     /like/{slug}
+    defaults: { _controller: BalletPostBundle:Default:like }
+
+unlike:
+    path:     /unlike/{slug}
+    defaults: { _controller: BalletPostBundle:Default:unlike }
+
 upload:
     path:   /upload
     defaults: {_controller: BalletPostBundle:Image:upload }

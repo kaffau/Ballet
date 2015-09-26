@@ -85,25 +85,6 @@
     }
 }
 
-//#feed {
-//    margin: 1.5em 0;
-//    padding: 0;
-//    -moz-column-gap: 1.5em;
-//    -webkit-column-gap: 1.5em;
-//    column-gap: 1.5em;
-//    font-size: .85em;
-//   -moz-column-count: 2;
-//    -webkit-column-count: 2;
-//    column-count: 2;
-//    overflow: auto;
-//    .item {
-//        display: inline-block;
-//        width: 100%;
-//    }
-//}
-
-
-
 .btn-waytoc {
     &.white {
         color: $black;
@@ -145,6 +126,9 @@
 
 .black {
     color: black;
+    &.half {
+        @include opacity(0.2);
+    }
 }
 
 html {  overflow: auto;}
@@ -169,4 +153,10 @@ a {
 }
 .dropdown-menu, .input-lg, .form-group-lg .form-control {
     @include border-radius(0);
+}
+
+a {
+    &:focus, &:active {
+        color: black;
+    }
 }
