@@ -1,0 +1,59 @@
+Ballet\PostBundle\Entity\Image:
+    type: entity
+    table: image
+    id:
+        picId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: picId
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            column: userId
+        name:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
+        path:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        uploadDate:
+            type: datetime
+            nullable: true
+            column: uploadDate
+        avrAge:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: false
+            column: avrAge
+        voters:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: false
+        likes:
+            type: bigint
+            nullable: truetrue
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

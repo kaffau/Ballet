@@ -1,0 +1,18 @@
+.btn-fb {
+    background: rgba($fb-blue, .9);
+    color: $white;
+    padding: 20px 10px;
+    line-height: 4px;
+    &:hover {
+        background: rgba($fb-blue, 1);
+        color: $white;
+    }
+    &:active {
+        background: $fb-dark-blue;
+    }
+    .icon-fb {
+        position: absolute;
+        left: 10px;
+        top: 2px;
+    }
+}

@@ -1,87 +1,82 @@
 {% extends 'BalletWaytocBundle:Layout:frame.html.twig' %}
 
 {% block content %}
-    <div class="front-page-wrapper">
-        <div class="col-sm-9 clearfix">
+    <div class="front-page-wrapper clearfix">
+        <div id="feed"  class="col-sm-9 col-xs-12 clearfix">
             {% for img in image %}
-                <div class="col-sm-6 col-xs-12">
+                <article class="item col-xs-12">
                     <div class="thumbnail">
                         <div class="caption text-center">
-                            <ul class="list-inline list-unstyled">
+                            {% set cookieName = 'age' ~ img.getpicId %}
+                            {% if app.request.cookies.has(cookieName) %}
+                            {% else %}
+                                <input type="hidden" name="imgId" data-id="{{img.getpicId}}">
+                                <label for="spinner"></label>
+                                <input class="spinner" name="value">
+                                <a href="{{path('image_vote', {'slug': img.getpicId})}}" type="submit" class="btn btn-circle">
+                                    <i class="fa fa-circle-o"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <a href="{{path('post_image', {'slug': img.getpicId})}}">
+                            <img src="{{ asset('web/media/cache/thumb_md/images/')}}{{ img.getPath }}" class="img-responsive">
+                        </a>
+                        <div class="caption text-center">
+                            <h4>{{img.name|default('Empty')}}</h4>
+                            <ul class="list-inline">
                                 <li>
-                                    <i class="glyphicon glyphicon-unchecked"></i>
+                                {% set voterCookie = 'voter' ~ img.getpicId %}
+                                {% if app.request.cookies.has(voterCookie) %}
+                                    <a class="btn-like" href="{{path('unlike', {'slug': img.getpicId})}}" data-like="{{path('like', {'slug': img.getpicId})}}" data-unlike="{{path('unlike', {'slug': img.getpicId})}}">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+
+                                {% else %}
+                                    <a class="btn-like" href="{{path('like', {'slug': img.getpicId})}}" data-like="{{path('like', {'slug': img.getpicId})}}" data-unlike="{{path('unlike', {'slug': img.getpicId})}}">
+                                        <i class="fa fa-heart-o"></i>
+                                    </a>
+                                {% endif %}
+                                </li>
+                                <li>
+                                    <a href="{{path('post_image', {'slug': img.getpicId})}}">
+                                        <i class="fa fa-comment-o"></i>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
-                        <a href="{{ path('post_image', {'slug': img.getpicId}) }}">
-                            <img src="{{ asset('uploads/images/')}}{{ img.getPath }}" alt="zu" class="img-responsive">
-                        </a>
-                        <div class="caption text-center">
-                            <h4>{{ img.name|default('Empty')}}</h4>
-                            <p class="description">
-                                {{ img.description|default('No description')}}
-                            </p>
-                        </div>
                     </div>
-                </div>
-                <span></span>
+                </article>
             {% endfor %}
-
-        </div><!-- col-sm-8 -->
+        </div>
+        <div id="loader">
+            <img src="http://i.imgur.com/6RMhx.gif" alt="">
+        </div>
         {% block sidebar_right %}
             <div class="col-sm-3">
-                <div class="col-sm-12 nopadding">
-                    <form class="" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                <span class="search-icon-wrapper">
-                    <i class="glyphicon glyphicon-search"></i>
-                </span>
-                        </div>
-                    </form>
+                <div class="col-sm-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Ad second sidebar -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-6500202005038395"
+                         data-ad-slot="7650511863"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
-                {% if app.user %}
-                    <div class="col-sm-12 nopadding">
-                        <div class="panel panel-blue panel-content">
-                            <div class="caption text-center">
-                                <h3>Upload photo!</h3>
-                            </div>
-                            <a href="{{ path('upload') }}" class="btn btn-primary btn-center">Upload</a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 nopadding">
-                        <div class="panel panel-orange panel-content">
-                            <div class="caption text-center">
-                                <h3>Create blog!</h3>
-                            </div>
-                            <button class="btn btn-default center-block">Create your blog!</button>
-                        </div>
-                    </div>
-                {%  endif %}
-                <div class="col-sm-12 nopadding">
-                    <div class="panel panel-green panel-content">
-                        <div class="caption text-center">
-                            <h3>Like us</h3>
-                        </div>
-                        <a href="{{ path('account_register' )}}" class="btn btn-default btn-center">
-                            <i class="glyphicon glyphicon-thumbs-up"></i>
-                        </a>
-                    </div>
+                <div class="col-sm-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Small add -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:180px;height:150px"
+                         data-ad-client="ca-pub-6500202005038395"
+                         data-ad-slot="6304876268"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
-                <div class="col-sm-12 nopadding">
-                    <div class="panel panel-blue panel-content">
-                        <div class="caption text-center">
-                            <h3>Subscribe</h3>
-                        </div>
-                        <div class="col-sm-11 center">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 clearfix"></div>
             </div>
         {% endblock %}
     </div>
-
 {% endblock %}

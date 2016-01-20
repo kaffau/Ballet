@@ -1,10 +1,10 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 framework:
-    #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:       ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -67,3 +67,67 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Ballet\UserBundle\Entity\User
+    registration:
+        confirmation:
+            enabled:    false
+            template:   FOSUserBundle:Registration:email.txt.twig
+    service:
+        mailer:                 fos_user.mailer.default
+        email_canonicalizer:    fos_user.util.canonicalizer.default
+        username_canonicalizer: fos_user.util.canonicalizer.default
+        token_generator:        fos_user.util.token_generator.default
+        user_manager:           fos_user.user_manager.default
+
+hwi_oauth:
+    connect:
+        account_connector: my_user_provider
+    firewall_name: main
+    http_client:
+        verify_peer: false
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebook_id
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           "%facebook_app_id%"
+            client_secret:       "%facebook_app_secret%"
+            scope:               ""
+            options:
+                display: page
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                web_root: %kernel.root_dir%/../web
+                cache_prefix: media/cache
+
+    loaders:
+        default:
+            filesystem:
+                data_root: %kernel.root_dir%/../web/
+
+    driver:               gd
+    cache:                default
+    data_loader:          default
+    default_image:        null
+    controller:
+        filter_action:         liip_imagine.controller:filterAction
+        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+    filter_sets:
+        thumb_sm:
+            filters:
+                thumbnail: { size: [215, 215], mode: inset }
+        thumb_md:
+            filters:
+                thumbnail: { size: [290, 290], mode: inset }
+        thumb_lg:
+            filters:
+                thumbnail: { size: [610, 610], mode: inset }

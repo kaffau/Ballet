@@ -1,0 +1,4 @@
+services:
+#    ballet_post.example:
+#        class: Ballet\PostBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

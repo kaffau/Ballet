@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    {% block stylesheet %}
+        <link href="{{ asset('bundles/balletwaytoc/assets/css/main.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Sofia|Engagement|Leckerli+One|Cookie' rel='stylesheet' type='text/css'>
+    {%  endblock %}
+</head>
+<body>
+
+{% include 'BalletWaytocBundle:Layout:header.html.twig' %}
+
+<div class="container-wrapper">
+    <div class="container">
+        <div class="row">
+            {% block content %}
+
+            {% endblock content %}
+
+            <div class="col-sm-3 nopadding clearfix">
+
+                {% block sidebar %}
+                    {#{% include 'BalletWaytocBundle:Layout:sidebar.html.twig' %}#}
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% block footer %}
+    <footer class="footer-wrap">
+        <div class="footer">
+        </div>
+    </footer>
+{% endblock %}
+{% block javascript %}
+    <script src="{{ asset('bundles/balletwaytoc/assets/js/main.min.js') }}"></script>
+{% endblock %}
+</body>
 </html>

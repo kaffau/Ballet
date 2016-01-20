@@ -1,6 +1,31 @@
+:focus {
+    outline: 0;
+}
+a:hover, a:active, a:focus, a:link, a:visited {
+    outline: 0;
+    outline-style:none;
+}
+button, object, embed {
+    outline: 0;
+}
+
+/* All Input elements */
+input::-moz-focus-inner {
+    outline: 0;
+}
+
+/* Or more specifically*/
+input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner{
+    outline: 0;
+}
+
 .center{
     float: none;
     margin: 0 auto;
+}
+
+.form-control {
+    @include border-radius(0);
 }
 
 .btn-center {
@@ -8,32 +33,22 @@
     display: table;
 }
 
+.btn {
+    @include border-radius(1px);
+}
+
 .container {
     max-width: 970px;
 }
 
 .container-wrapper {
-    margin-top: 50px;
+    margin-top: -3em;
+    padding-top: 4em;
+    background: #F3F4F5;
 }
 
 .mt10 {
     margin-top: 10px;
-}
-
-.panel-green {
-    background-color: #37a8b4;
-}
-
-.panel-orange {
-    background-color: coral;
-}
-
-.panel-blue {
-    background-color: skyblue;
-}
-
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    margin: 50px 0 0;
 }
 
 .mt10 {
@@ -74,4 +89,121 @@
         margin: auto;
         max-height: 90px;
     }
+}
+
+#feed {
+    overflow: hidden;
+    .item {
+        width: 45%;
+        padding: 0 15px 15px;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            margin-left: -15px;
+        }
+    }
+}
+
+.btn-waytoc {
+    &.white {
+        color: $black;
+        background-color: rgba($light-grey, .9);
+        border: none;
+        &:hover {
+            background-color: $white;
+        }
+        &:focus {
+            outline: 0;
+        }
+    }
+}
+
+.thumbnail {
+    @include border-radius(0);
+    border: 0;
+}
+
+.white {
+    color: $white;
+}
+
+.white-smoke {
+    color: rgba($white, 0.8);
+}
+
+.pt30 {
+    padding-top: 30px;
+}
+
+.radius4 {
+    @include border-radius(4px);
+}
+
+.relative {
+    position: relative;
+}
+
+.black {
+    color: black;
+    &.half {
+        @include opacity(0.2);
+    }
+}
+
+html {  overflow: auto;}
+
+a {
+    color: #000;
+    &:hover {
+        color: rgba(#000, 0.8);
+    }
+}
+
+.fz4 {
+    font-size: 4em;
+}
+.fz1 {
+    font-size: 1em;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mh115 {
+    max-height: 115px;
+}
+.dropdown-menu, .input-lg, .form-group-lg .form-control {
+    @include border-radius(0);
+}
+
+a {
+    &:focus, &:active {
+        color: black;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-default .navbar-collapse {
+        margin: 0;
+        background-color: rgba($white, 0.9);
+        border: 1px solid black;
+    }
+    .header-wrap .navbar-nav>li {
+        float: none;
+        padding: 0 12px;
+        margin: 0;
+        background: none;
+        > a {
+            color: black;
+        }
+    }
+    .header-wrap .title {
+        margin: 0 20px;
+        font-size: 3em;
+    }
+}
+
+
+.logo {
+    margin: -3.1em 1em 0 0;
 }

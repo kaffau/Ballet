@@ -1,0 +1,19 @@
+Ballet\UserBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        facebook_id:
+            type: string
+            length: 255
+            nullable: true
+
+        facebook_access_token:
+            type: string
+            length: 255
+            nullable: true
+

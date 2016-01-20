@@ -1,52 +1,41 @@
 security:
     encoders:
-        Ballet\WaytocBundle\Entity\User:
-            algorithm: sha512
-            iterations: 13
+        FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
-        database:
-             entity: { class: BalletWaytocBundle:User, property: username }
-        in_memory:
-            memory:
-                users:
-                    ryan:
-                        password: sha512
-                        roles: 'ROLE_USER'
-                    admin:
-                        password: sha512
-                        roles: 'ROLE_ADMIN'
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+#            id: fos_user.user_provider.username
 
 
 
     firewalls:
-        secured_area:
+        main:
             pattern: ^/
-            anonymous: ~
             form_login:
-                login_path: login
-                check_path: login_check
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                login_path: /login
+                check_path: /login_check
+            oauth:
+                resource_owners:
+                    facebook:           "/login/check-facebook"
+                login_path:        /login
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: my_user_provider
             logout:
                 path:   /logout
-                target: /waytoc
-            anonymous: true
-            #http_basic:
-            #    realm: "Secured Demo Area"
-
-#        secured_area:
-#            pattern:   ^/login$
-#            anonymous: ~
-#            form_login:
-#                login_path: login
-#                check_path: login_check
-#                username_parameter: _username
-#                password_parameter: _password
+                target: /
+            anonymous:    true
 
     access_control:
-          - { path: ^/about, roles: ROLE_USER }
-#        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-#        - { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }

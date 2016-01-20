@@ -1,0 +1,37 @@
+front_page:
+    path:      /
+    defaults:  { _controller: BalletPostBundle:Default:showImages }
+
+post_image:
+    path:     /item/{slug}
+    defaults: { _controller: BalletPostBundle:Default:showImage }
+
+image_vote:
+    path:     /vote/{slug}
+    defaults: { _controller: BalletPostBundle:Default:vote }
+
+like:
+    path:     /like/{slug}
+    defaults: { _controller: BalletPostBundle:Default:like }
+
+unlike:
+    path:     /unlike/{slug}
+    defaults: { _controller: BalletPostBundle:Default:unlike }
+
+upload:
+    path:   /upload
+    defaults: {_controller: BalletPostBundle:Image:upload }
+
+images:
+    path:      /images/{slug}
+    defaults:  { _controller: BalletPostBundle:Image:showUserImages }
+
+delete:
+    path:      /delete/{slug}
+    defaults:  { _controller: BalletPostBundle:Image:deleteImage }
+
+about:
+    path: /about
+    defaults: {_controller: BalletPostBundle:Default:about}
+
+

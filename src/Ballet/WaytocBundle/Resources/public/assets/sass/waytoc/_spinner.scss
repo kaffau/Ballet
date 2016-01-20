@@ -1,0 +1,56 @@
+.ui-spinner-input {
+    width: 45px;
+    height: 45px;
+    border: 0;
+    text-align: center;
+}
+
+.btn-circle {
+    font-size: 4em;
+    border: 0;
+    position: absolute;
+    left: 50%;
+    background: transparent;
+    top: -22px;
+    margin-left: -38px;
+    color: rgba(lightblue, 0.6);
+    &:focus, &:active {
+        color: red;
+    }
+}
+
+.ui-spinner {
+    display: inline-block;
+}
+
+.ui-spinner-up {
+    float: right;
+    border: 1px solid rgba($black, 0.1);
+    border-left: 0;
+    line-height: 2em;
+    width: 45px;
+    cursor: pointer;
+    @extend .fa;
+    @extend .fa-plus;
+    color: $black;
+    position: relative;
+    top: 5px;
+    left: 0;
+    &:hover {
+        color: $black;
+        text-decoration: none;
+    }
+    > span {
+        display: none;
+    }
+}
+
+.ui-spinner-down {
+    @extend .ui-spinner-up;
+    float: left;
+    border: 1px solid rgba($black, 0.1);
+    border-right: 0;
+    @extend .fa-minus;
+    right: 0;
+    left: auto;
+}

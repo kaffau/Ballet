@@ -1,0 +1,48 @@
+{% extends 'BalletWaytocBundle:Layout:frame.html.twig' %}
+
+{% block content %}
+    <div class="col-sm-10 clearfix">
+        <div class="col-sm-10 col-xs-12">
+            <div class="thumbnail">
+                <div class="caption text-center">
+                    {% set cookieName = 'age' ~ image.getpicId %}
+                    {% if app.request.cookies.has(cookieName) %}
+                    {% else %}
+                        <input type="hidden" name="imgId" data-id="{{image.getpicId}}">
+                        <label for="spinner"></label>
+                        <input class="spinner" name="value">
+                        <a href="{{ path('image_vote', {'slug': image.getpicId}) }}" type="submit" class="btn btn-circle">
+                            <i class="fa fa-circle-o"></i>
+                        </a>
+                    {% endif %}
+                </div>
+                <img src="{{ asset('web/media/cache/thumb_lg/images/')}}{{ image.getPath }}" alt="{{ image.getName }}" class="img-responsive">
+                <div class="caption text-center">
+                    <h4>{{ image.name|default('Empty')}}</h4>
+                    {% if image.description  %}
+                        <p class="description">
+                            <i class="fa fa-quote-left black half"></i>
+                            {{ image.description|default('No description')}}
+                            <i class="fa fa-quote-right black half"></i>
+                        </p>
+                    {% endif %}
+                    <ul class="list-unstyled list-inline pull-right">
+                        {% if age %}
+                            <li>
+                                <i class="fa fa-bar-chart"></i>
+                                {{age|round(0,'floor')}}
+                            </li>
+                        {% endif %}
+                        {% if image.getLikes %}
+                            <li>
+                                <i class="fa fa-heart"></i>
+                                {{ image.getLikes|default('0')}}
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

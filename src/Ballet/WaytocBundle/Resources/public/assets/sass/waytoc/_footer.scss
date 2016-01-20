@@ -1,6 +1,6 @@
 .footer-wrap {
     min-height: 100px;
-    background-color: #7c0057;
+    background-color: rgba($black, .9);
     position: relative;
     margin-top: -180px; /* negative value of footer height */
     height: 180px;
@@ -14,18 +14,32 @@ html, body {
 .container-wrapper {
     min-height: 100%;
     > .container {
-        overflow: auto;
+        overflow: hidden;
         padding-bottom: 180px;
     }
 }
 
-/*Opera Fix*/
+.social-icons {
+    a {
+        font: {
+            size: 4rem;
+        }
+        color: rgba($white, 0.8);
+
+        &:hover {
+            color: rgba($white, 0.9);
+        }
+        &:active, &:focus {
+            color: $white;
+        }
+    }
+}
+
 body:before {
-    /* thanks to Maleika (Kohoutec)*/
     content: "";
     height: 100%;
     float: left;
     width: 0;
-    margin-top: -32767px; /* thank you Erik J - negate effect of float*/
+    margin-top: -32767px;
 }
 

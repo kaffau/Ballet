@@ -1,0 +1,43 @@
+{% for img in image %}
+    <article class="item col-xs-12">
+        <div class="thumbnail">
+            <div class="caption text-center">
+                {% set cookieName = 'age' ~ img.getpicId %}
+                {% if app.request.cookies.has(cookieName) %}
+                {% else %}
+                    <input type="hidden" name="imgId" data-id="{{img.getpicId}}">
+                    <label for="spinner"></label>
+                    <input class="spinner" name="value">
+                    <a href="{{path('image_vote', {'slug': img.getpicId})}}" type="submit" class="btn btn-circle">
+                        <i class="fa fa-circle-o"></i>
+                    </a>
+                {% endif %}
+            </div>
+            <a href="{{path('post_image', {'slug': img.getpicId})}}">
+                <img src="{{ asset('web/media/cache/thumb_md/images/')}}{{ img.getPath }}" class="img-responsive">
+            </a>
+            <div class="caption text-center">
+                <h4>{{img.name|default('Empty')}}</h4>
+                <ul class="list-inline">
+                    <li>
+                        {% set voterCookie = 'voter' ~ img.getpicId %}
+                        {% if app.request.cookies.has(voterCookie) %}
+                            <a class="btn-like" href="{{path('unlike', {'slug': img.getpicId})}}" data-like="{{path('like', {'slug': img.getpicId})}}" data-unlike="{{path('unlike', {'slug': img.getpicId})}}">
+                                <i class="fa fa-heart"></i>
+                            </a>
+                        {% else %}
+                            <a class="btn-like" href="{{path('like', {'slug': img.getpicId})}}" data-like="{{path('like', {'slug': img.getpicId})}}" data-unlike="{{path('unlike', {'slug': img.getpicId})}}">
+                                <i class="fa fa-heart-o"></i>
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <a href="{{path('post_image', {'slug': img.getpicId})}}">
+                            <i class="fa fa-comment-o"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+{% endfor %}
