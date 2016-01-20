@@ -1,6 +1,23 @@
 :focus {
     outline: 0;
 }
+a:hover, a:active, a:focus, a:link, a:visited {
+    outline: 0;
+    outline-style:none;
+}
+button, object, embed {
+    outline: 0;
+}
+
+/* All Input elements */
+input::-moz-focus-inner {
+    outline: 0;
+}
+
+/* Or more specifically*/
+input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner{
+    outline: 0;
+}
 
 .center{
     float: none;
@@ -81,6 +98,7 @@
         padding: 0 15px 15px;
         @media screen and (max-width: 768px) {
             width: 100%;
+            margin-left: -15px;
         }
     }
 }
@@ -143,6 +161,9 @@ a {
 .fz4 {
     font-size: 4em;
 }
+.fz1 {
+    font-size: 1em;
+}
 
 .mb15 {
     margin-bottom: 15px;
@@ -159,4 +180,30 @@ a {
     &:focus, &:active {
         color: black;
     }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-default .navbar-collapse {
+        margin: 0;
+        background-color: rgba($white, 0.9);
+        border: 1px solid black;
+    }
+    .header-wrap .navbar-nav>li {
+        float: none;
+        padding: 0 12px;
+        margin: 0;
+        background: none;
+        > a {
+            color: black;
+        }
+    }
+    .header-wrap .title {
+        margin: 0 20px;
+        font-size: 3em;
+    }
+}
+
+
+.logo {
+    margin: -3.1em 1em 0 0;
 }

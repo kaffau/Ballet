@@ -28,18 +28,18 @@ function addMoreElements() {
             }
             page = page + 1;
             var $grid = $('#feed');
-            $grid.after().append(data);
-            $grid.imagesLoaded( function() {
-                $grid.masonry('reloadItems').masonry({
-                    transitionDuration: '1.0s',
-                    isAnimatedFromBottom: true
-                });
-            });
+            var html = $.parseHTML(data);
+            $grid.append(html);
+            $grid.masonry('appended',html);
+            $grid.masonry('reloadItems');
             var spinner = $(".spinner").spinner({min: 16, max: 60}).val(26);
 
+            $grid.imagesLoaded( function() {
+                $grid.masonry();
+            });
 
-            //last_page = data.last_page;
             is_processing = false;
+
         },
         error: function(data) {
             console.log("failed");
@@ -57,6 +57,7 @@ if($('#feed').length > 0) {
             if (last_page === false && is_processing === false) {
                 addMoreElements();
             }
+
         }
     });
 }

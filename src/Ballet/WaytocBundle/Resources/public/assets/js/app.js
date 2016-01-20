@@ -3,7 +3,7 @@ if(feed.length) {
     var $grid = $('#feed').imagesLoaded( function() {
         $grid.masonry({
             itemSelector: '.item',
-            percentPosition: true
+            percentPosition: false
         });
     });
     scrollFrame('#feed .item img');
@@ -16,21 +16,24 @@ $(function() {
         e.preventDefault();
         var caption = $(this).closest(".caption");
         var ageValue = $(this).closest(".thumbnail").find('.spinner').spinner().val();
-        var data = {age : ageValue};
-        var $href = $(this).attr('href');
+        if($.isNumeric(ageValue)) {
+            var data = {age : ageValue};
+            var $href = $(this).attr('href');
 
-        $.ajax({
-            type: "POST",
-            url: $href,
-            data: data,
-            success: function (data) {
-                caption.empty();
-                caption.append('<h4>Thank you!</h4>').hide().fadeIn(2000);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log('Error : ' + errorThrown);
-            }
-        })
+            $.ajax({
+                type: "POST",
+                url: $href,
+                data: data,
+                success: function (data) {
+                    caption.empty();
+                    caption.append('<h4>Thank you!</h4>').hide().fadeIn(2000);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error : ' + errorThrown);
+                }
+            })
+        }
+
     });
 
     $("body").on("click",".btn-like", function(e) {
@@ -97,8 +100,10 @@ $(document).ready(function(){
                 }
             },
             success: function() {
+                console.log("Success");
             }
         });
     }
 
 });
+

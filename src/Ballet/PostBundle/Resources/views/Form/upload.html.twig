@@ -8,8 +8,12 @@
             <div class="form-group-lg mb15">
                 {{ form_widget(form.description , { 'attr': {'class': 'form-control', 'placeholder':'Tell something about you and your style'} }) }}
             </div>
-            <div class="dropzone-preview clearfix"></div>
+            <div class="dropzone-preview clearfix">
             {{ form_widget(form.file , { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="dz-default dz-message">
+                <span>Drag your image here</span>
+            </div>
             <div class="form-group-lg mb15 clearfix">
                 {{ form_label(form.upload) }}
                 {{ form_widget(form.upload , { 'attr': {'class': 'btn btn-lg btn-primary col-lg-12'} }) }}

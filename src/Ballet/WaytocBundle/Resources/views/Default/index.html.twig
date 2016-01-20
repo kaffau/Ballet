@@ -19,8 +19,7 @@
                             {% endif %}
                         </div>
                         <a href="{{path('post_image', {'slug': img.getpicId})}}">
-                            <img srcset="{{ asset('media/cache/thumb_lg/images/')}}{{ img.getPath }} 610w, {{ asset('media/cache/thumb_md/images/')}}{{ img.getPath }} 1x"
-                                 src="{{ asset('media/cache/thumb_md/images/')}}{{ img.getPath }}" class="img-responsive">
+                            <img src="{{ asset('web/media/cache/thumb_md/images/')}}{{ img.getPath }}" class="img-responsive">
                         </a>
                         <div class="caption text-center">
                             <h4>{{img.name|default('Empty')}}</h4>
@@ -52,6 +51,32 @@
         <div id="loader">
             <img src="http://i.imgur.com/6RMhx.gif" alt="">
         </div>
-        {% block sidebar_right %}{% endblock %}
+        {% block sidebar_right %}
+            <div class="col-sm-3">
+                <div class="col-sm-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Ad second sidebar -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-6500202005038395"
+                         data-ad-slot="7650511863"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="col-sm-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Small add -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:180px;height:150px"
+                         data-ad-client="ca-pub-6500202005038395"
+                         data-ad-slot="6304876268"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        {% endblock %}
     </div>
 {% endblock %}

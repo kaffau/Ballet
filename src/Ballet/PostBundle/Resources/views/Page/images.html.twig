@@ -7,14 +7,13 @@
                 <article class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
                     <div class="thumbnail">
                         <a href="{{path('post_image', {'slug': image.getpicId})}}">
-                            <img src="{{ asset('media/cache/thumb_lg/images/')}}{{ image.getPath }}"
+                            <img src="{{ asset('web/media/cache/thumb_lg/images/')}}{{ image.getPath }}"
                                  alt="{{ image.getName }}" class="img-responsive mh115">
                         </a>
                         <div class="caption text-center">
-                            <h4>{{image.name|default('Empty')}}</h4>
                             <div class="btn-center">
                                 <a href="{{path('delete', {'slug': image.getpicId})}}" class="btn btn-default text-center">
-                                    <i class="fa fa-remove fz4"></i>
+                                    <i class="fa fa-remove fz1"></i>
                                 </a>
                             </div>
                         </div>
@@ -25,7 +24,7 @@
                 <h4 class="alert alert-warning text-center">You don't have any photos</h4>
                 <div class="btn-center">
                     <a href="{{path('upload')}}" class="btn btn-default text-center">
-                        <i class="fa fa-upload fz4"></i>
+                        <i class="fa fa-upload fz1"></i>
                     </a>
                 </div>
         </section>

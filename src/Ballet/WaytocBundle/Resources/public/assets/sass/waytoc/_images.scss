@@ -1,12 +1,10 @@
-//.images {
-//    .thumbnail {
-//        position: relative;
-//        height: 200px;
-//         img {
-//            max-height: 140px;
-//            position: absolute;
-//            top: 0;
-//            bottom: 0;
-//        }
-//    }
-//}
+.images {
+    .btn-default {
+        position: absolute;
+        top: 0;
+        right: 13px;
+    }
+    img {
+        max-height: 90px;
+    }
+}
