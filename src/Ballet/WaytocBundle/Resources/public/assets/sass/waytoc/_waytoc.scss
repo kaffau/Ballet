@@ -100,6 +100,9 @@ input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner{
             width: 100%;
             margin-left: -15px;
         }
+        .link {
+            display: block;
+        }
     }
 }
 
@@ -206,4 +209,9 @@ a {
 
 .logo {
     margin: -3.1em 1em 0 0;
+}
+
+
+.btn {
+    @include transition(all 0.3s linear);
 }

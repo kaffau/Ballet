@@ -43,6 +43,7 @@ module.exports = function (grunt) {
                     'web/bundles/balletwaytoc/assets/js/imagesLoaded.js',
                     'web/bundles/balletwaytoc/assets/js/infinite-scroll.js',
                     'web/bundles/balletwaytoc/assets/js/dropzone.js',
+                    'web/bundles/balletwaytoc/assets/js/jquery.lazyload.min.js',
                     'web/bundles/balletwaytoc/assets/js/app.js'
                 ],
                 dest: 'web/bundles/balletwaytoc/assets/js/main.js'

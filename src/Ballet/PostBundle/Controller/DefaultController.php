@@ -69,8 +69,9 @@ class DefaultController extends Controller
         $ajaxAge = $request->request->get('age');
         $previousAge = $image->getAvrAge();
         $age = $previousAge + $ajaxAge;
-        $image->setAvrAge($age);
         $image->setVoters();
+        $em->persist($image);
+        $image->setAvrAge($age);
         $em->persist($image);
         $em->flush();
 

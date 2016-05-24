@@ -1,15 +1,20 @@
-var feed = $('#feed');
-if(feed.length) {
-    var $grid = $('#feed').imagesLoaded( function() {
-        $grid.masonry({
-            itemSelector: '.item',
-            percentPosition: false
-        });
-    });
-    scrollFrame('#feed .item img');
-}
+$(function() {
 
-var spinner = $(".spinner").spinner({min: 16, max: 90}).val(26);
+    var feed = $('#feed');
+    if(feed.length) {
+        var $grid = $('#feed').imagesLoaded( function() {
+            $grid.masonry({
+                itemSelector: '.item',
+                percentPosition: false
+            });
+        });
+        scrollFrame('#feed .item img');
+    }
+
+    var spinner = $(".spinner").spinner({min: 16, max: 90}).val(26);
+
+});
+
 
 $(function() {
     $("body").on("click",".btn-circle", function(e) {
@@ -61,7 +66,8 @@ $(function() {
                 console.log('Error : ' + errorThrown);
             }
         })
-    })
+    });
+
 });
 
 
@@ -89,6 +95,10 @@ $(document).ready(function(){
                 $("#form_upload").on('click',function(e) {
                     e.preventDefault();
                     myDropzone.processQueue();
+                });
+                this.on('complete', function () {
+                    var url = $(".after-upload").data("redirect");
+                    document.location.href=url;
                 });
             },
             accept: function(file, done) {
